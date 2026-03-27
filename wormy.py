@@ -76,7 +76,7 @@ def runGame():
                     terminate()
 
         if paused:
-            # Snake hit a wall, waiting for direction from player
+            # Worm hit a wall, waiting for direction from player
             DISPLAYSURF.fill(BGCOLOR)
             drawGrid()
             drawWalls(walls)
@@ -97,16 +97,16 @@ def runGame():
         elif direction == RIGHT:
             newHead = {'x': wormCoords[HEAD]['x'] + 1, 'y': wormCoords[HEAD]['y']}
 
-        # Check if the snake hit the edge
+        # Check if the worm hit the edge
         if newHead['x'] < 0 or newHead['x'] >= CELLWIDTH or newHead['y'] < 0 or newHead['y'] >= CELLHEIGHT:
             return  # game over
 
-        # Check if the snake hit a wall
+        # Check if the worm hit a wall
         if newHead in walls:
             paused = True # pause without losing length
             continue
 
-        # Check if the snake hit itself
+        # Check if the worm hit itself
         for body in wormCoords[1:]:
             if body['x'] == newHead['x'] and body['y'] == newHead['y']:
                 return
@@ -132,7 +132,7 @@ def runGame():
 
 
 def generateWalls(wormCoords=None, apple=None, min_walls=6, max_walls=10):
-    #No overlapping with the random walls on the snake or the apple
+    #No overlapping with the random walls on the worm or the apple
     occupied = set()
     if wormCoords:
         for seg in wormCoords:
